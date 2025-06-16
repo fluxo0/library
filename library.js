@@ -1,5 +1,8 @@
 const myLibrary = [];
 const tbody = document.querySelector("#tbody");
+const dialog = document.querySelector("dialog");
+const bookBtn = document.querySelector(".container button");
+const closeBtn = document.querySelector("dialog button");
 
 function Book(title, author, pages, read, id) {
     if (!new.target) {
@@ -20,6 +23,11 @@ function addBookToLibrary(title, author, pages, read) {
     const book = new Book(title, author, pages, read, id);
     return myLibrary.push(book);
 }
+
+addBookToLibrary("foo1", "bar1", 100, "no");
+addBookToLibrary("foo2", "bar2", 200, "yes");
+addBookToLibrary("foo3", "bar3", 300, "no");
+console.table(myLibrary); 
 
 function displayBooks() {
     myLibrary.forEach((book) => {
@@ -45,8 +53,15 @@ function displayBooks() {
         const id = document.createElement("td");
         id.textContent = book.id;
         tr.appendChild(id);
-
     });
 }
+
+bookBtn.addEventListener("click", () => {
+    dialog.showModal();
+});
+
+closeBtn.addEventListener("click", () => {
+    dialog.close();
+});
 
 displayBooks();
