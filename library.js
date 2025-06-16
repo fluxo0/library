@@ -1,4 +1,5 @@
 const myLibrary = [];
+const tbody = document.querySelector("#tbody");
 
 function Book(title, author, pages, read, id) {
     if (!new.target) {
@@ -20,7 +21,32 @@ function addBookToLibrary(title, author, pages, read) {
     return myLibrary.push(book);
 }
 
-addBookToLibrary("aaaa", "aaaaa1", 778, "no");
-addBookToLibrary("aaaa", "aaaaa1", 778, "no");
-addBookToLibrary("aaaa", "aaaaa1", 778, "no");
-console.table(myLibrary);
+function displayBooks() {
+    myLibrary.forEach((book) => {
+        const tr = document.createElement("tr");
+        tbody.appendChild(tr);
+
+        const title = document.createElement("td");
+        title.textContent = book.title;
+        tr.appendChild(title);
+
+        const author = document.createElement("td");
+        author.textContent = book.author;
+        tr.appendChild(author);
+
+        const pages = document.createElement("td");
+        pages.textContent = book.pages;
+        tr.appendChild(pages);
+
+        const read = document.createElement("td");
+        read.textContent = book.read;
+        tr.appendChild(read);
+
+        const id = document.createElement("td");
+        id.textContent = book.id;
+        tr.appendChild(id);
+
+    });
+}
+
+displayBooks();
