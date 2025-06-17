@@ -3,6 +3,7 @@ const tbody = document.querySelector("#tbody");
 const dialog = document.querySelector("dialog");
 const bookBtn = document.querySelector(".container button");
 const closeBtn = document.querySelector("dialog button");
+const form = document.querySelector("form");
 
 function Book(title, author, pages, read, id) {
     if (!new.target) {
@@ -30,6 +31,8 @@ addBookToLibrary("foo3", "bar3", 300, "no");
 console.table(myLibrary); 
 
 function displayBooks() {
+    deleteTable();
+
     myLibrary.forEach((book) => {
         const tr = document.createElement("tr");
         tbody.appendChild(tr);
@@ -64,4 +67,28 @@ closeBtn.addEventListener("click", () => {
     dialog.close();
 });
 
+form.addEventListener("submit", submitClick);
+
+function submitClick(event) {
+    const title = document.querySelector("#title");
+    const author = document.querySelector("#author");
+    const pages = document.querySelector("#pages");
+    const read = document.querySelector("#read");
+
+    addBookToLibrary(title.value, author.value, pages.value, read.value);
+    event.preventDefault();
+
+    displayBooks();
+    dialog.close();
+}
+
+function deleteTable() {
+    const table = document.querySelector("table");
+    
+    for (let i = table.rows.length - 1; i >= 1; i--) {
+        table.deleteRow(i);
+    }
+}
+
+// test
 displayBooks();
