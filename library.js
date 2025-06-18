@@ -14,9 +14,6 @@ function Book(title, author, pages, read, id) {
     this.pages = pages;
     this.read = read;
     this.id = id;
-    this.info = function () {
-        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-    };
 } 
 
 function addBookToLibrary(title, author, pages, read) {
@@ -25,9 +22,9 @@ function addBookToLibrary(title, author, pages, read) {
     return myLibrary.push(book);
 }
 
-addBookToLibrary("foo1", "bar1", 100, "no");
-addBookToLibrary("foo2", "bar2", 200, "yes");
-addBookToLibrary("foo3", "bar3", 300, "no");
+addBookToLibrary("foo1", "bar1", 100, "No");
+addBookToLibrary("foo2", "bar2", 200, "Yes");
+addBookToLibrary("foo3", "bar3", 300, "No");
 console.table(myLibrary); 
 
 function displayBooks() {
@@ -56,6 +53,41 @@ function displayBooks() {
         const id = document.createElement("td");
         id.textContent = book.id;
         tr.appendChild(id);
+
+        const readCheckbox = document.createElement("input");
+        readCheckbox.setAttribute("type", "checkbox");
+
+        if (book.read === "Yes") {
+            readCheckbox.checked = true;
+        } else {
+            readCheckbox.checked = false;
+        }
+        tr.appendChild(readCheckbox);
+
+        readCheckbox.addEventListener("click", () => {
+            if (readCheckbox.checked) {
+                book.read = "Yes";
+                displayBooks();
+            } else {
+                book.read = "No";
+                displayBooks();
+            }
+        });
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.setAttribute("class", "deleteBtn");
+        deleteBtn.textContent = "Delete";
+        tr.appendChild(deleteBtn);
+
+        deleteBtn.addEventListener("click", () => {
+            for (let i = 0; i < myLibrary.length; i++) {
+                if (myLibrary[i].id === book.id) {
+                    myLibrary.splice(i, 1);
+                }
+            }
+
+            displayBooks();
+        });
     });
 }
 
@@ -74,6 +106,12 @@ function submitClick(event) {
     const author = document.querySelector("#author");
     const pages = document.querySelector("#pages");
     const read = document.querySelector("#read");
+
+    if (read.checked) {
+        read.value = "Yes";
+    } else {
+        read.value = "No";
+    }
 
     addBookToLibrary(title.value, author.value, pages.value, read.value);
     event.preventDefault();
