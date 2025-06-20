@@ -1,11 +1,138 @@
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: url('font/AtkinsonHyperlegible-BoldItalic.woff2') format('woff2'),
+        url('font/AtkinsonHyperlegible-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: url('font/AtkinsonHyperlegible-Italic.woff2') format('woff2'),
+        url('font/AtkinsonHyperlegible-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: url('font/AtkinsonHyperlegible-Bold.woff2') format('woff2'),
+        url('font/AtkinsonHyperlegible-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: url('font/AtkinsonHyperlegible-Regular.woff2') format('woff2'),
+        url('font/AtkinsonHyperlegible-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --shadow: 0.1rem 0.1rem 0.2rem #000000;
+}
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
 
+body * {
+    font-family: "Atkinson Hyperlegible";
 }
 
 ::backdrop {
     background-color: #000;
     opacity: 0.75;
 }
+
+body {
+    display: flex;
+    justify-content: center;
+    background-color: #e4ecf3;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-top: 1rem;
+    background-color: #a1d0f3;
+    box-shadow: var(--shadow);
+}
+
+.top-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+h3 {
+    margin: 1.5rem;
+    font-size: 2rem;
+    color: #fff;
+}
+
+.new-book-btn {
+    background-color: #42a7f5;
+    color: #fff;
+    border-style: none;
+    margin: 1.1rem 0.7rem;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: var(--shadow);
+    padding: 0px 40px;
+}
+
+thead tr th {
+    background-color: #f5e1b0;
+    font-size: 1.1rem;;
+    padding: 1rem;
+    border-bottom: 7px solid #deb13d;
+}
+
+tbody tr td:nth-child(-n + 5) {
+    padding-left: 0.5rem;
+}
+
+tbody tr td:nth-child(5) {
+    font-size: 0.8rem;
+    width: 54px;
+    padding: 5px
+
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f6f6f6;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #e4ecf3;
+}
+
+tbody input[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    margin: 25px 20px
+}
+
+.blank {
+    width: 180px;
+    padding-right: 0px;
+}
+
+tbody .delete-btn {
+    box-shadow: 1px 1px 0 #000;
+    background-color: #f27b7b;
+    color: #fff;
+    font-weight: bold;
+    height: 50px;
+    width: 100px;
+}
+

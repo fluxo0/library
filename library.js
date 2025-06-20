@@ -75,7 +75,7 @@ function displayBooks() {
         });
 
         const deleteBtn = document.createElement("button");
-        deleteBtn.setAttribute("class", "deleteBtn");
+        deleteBtn.setAttribute("class", "delete-btn");
         deleteBtn.textContent = "Delete";
         tr.appendChild(deleteBtn);
 
