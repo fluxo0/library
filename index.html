@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Library</title>
 </head>
+
 <body>
     <div class="container">
         <div class="top-container">
@@ -27,43 +29,46 @@
 
             <tbody id="tbody"></tbody>
         </table>
+    </div>
 
-        <dialog>
-            <button autofocus>Close</button>
+    <dialog>
+        <div class="window">
+            <button autofocus id="closeBtn">Close</button>
 
             <form action="">
                 <div class="form-input">
                     <label for="title">
                         <span>*</span> Title:
                     </label>
-                    <input type="text" name="title" id="title" required />
+                    <input type="text" name="title" id="title" value="" required />
                 </div>
                 <div class="form-input">
                     <label for="author">
                         <span>*</span> Author:
                     </label>
-                    <input type="text" name="author" id="author" required />
+                    <input type="text" name="author" id="author" value="" required />
                 </div>
                 <div class="form-input">
                     <label for="pages">
                         <span>*</span> Pages:
                     </label>
-                    <input type="number" name="pages" id="pages" required />
+                    <input type="number" name="pages" id="pages" value="" required />
                 </div>
                 <div class="form-input">
                     <label for="read">
-                        <span>*</span> Read:
+                        &nbsp;&nbsp;Read:
                     </label>
-                    <input type="checkbox" name="read" id="read" unchecked/>
+                    <input type="checkbox" name="read" id="read" unchecked />
                 </div>
                 <p>* Required</p>
                 <div class="form-input">
                     <button type="submit">Confirm</button>
                 </div>
             </form>
-        </dialog>
-    </div>
-    
+        </div>
+    </dialog>
+
     <script src="library.js"></script>
 </body>
+
 </html>

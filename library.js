@@ -2,7 +2,7 @@ const myLibrary = [];
 const tbody = document.querySelector("#tbody");
 const dialog = document.querySelector("dialog");
 const bookBtn = document.querySelector(".container button");
-const closeBtn = document.querySelector("dialog button");
+const closeBtn = document.querySelector("#closeBtn");
 const form = document.querySelector("form");
 
 function Book(title, author, pages, read, id) {
@@ -20,12 +20,7 @@ function addBookToLibrary(title, author, pages, read) {
     const id = crypto.randomUUID();
     const book = new Book(title, author, pages, read, id);
     return myLibrary.push(book);
-}
-
-addBookToLibrary("foo1", "bar1", 100, "No");
-addBookToLibrary("foo2", "bar2", 200, "Yes");
-addBookToLibrary("foo3", "bar3", 300, "No");
-console.table(myLibrary); 
+} 
 
 function displayBooks() {
     deleteTable();
@@ -114,6 +109,10 @@ function submitClick(event) {
     }
 
     addBookToLibrary(title.value, author.value, pages.value, read.value);
+    title.value = "";
+    author.value = "";
+    pages.value = "";
+    read.checked = false;
     event.preventDefault();
 
     displayBooks();
@@ -127,6 +126,3 @@ function deleteTable() {
         table.deleteRow(i);
     }
 }
-
-// test
-displayBooks();
