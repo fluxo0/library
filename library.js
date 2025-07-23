@@ -5,16 +5,15 @@ const bookBtn = document.querySelector(".container button");
 const closeBtn = document.querySelector("#closeBtn");
 const form = document.querySelector("form");
 
-function Book(title, author, pages, read, id) {
-    if (!new.target) {
-        throw Error("You must use the 'new' operator to call the constructor");
+class Book {
+    constructor(title, author, pages, read, id) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = id;
     }
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = id;
-} 
+}
 
 function addBookToLibrary(title, author, pages, read) {
     const id = crypto.randomUUID();
